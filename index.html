@@ -1,0 +1,951 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Homestead Test</title>
+
+    <!--FONTS-->
+    <link rel="stylesheet" href="fonts/metropolis-font/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!--swiper-->
+
+    <!--ICONS-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!--CSS-->
+    <style>
+        /***********************************/
+        /***********************************/
+        /***********HOMESTEAD CODES*********/
+        /***********************************/
+        /***********************************/
+        body{
+            font-family: 'Metropolis Regular',Arial,sans-serif,-apple-system;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: -webkit-left;
+            text-align: left;
+            overflow-x: hidden;
+            color: #212529;
+            max-width: 100%;
+            width: 100%;
+            min-height: 100vh;
+            height: 100%;
+        }
+
+        a{
+            text-decoration: none;
+            background-color: transparent;
+            color: #212529;
+        }
+
+        button{
+            appearance: auto;
+            writing-mode: horizontal-tb !important;
+            text-rendering: auto;
+            color: buttontext;
+            letter-spacing: normal;
+            word-spacing: normal;
+            line-height: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: center;
+            align-items: flex-start;
+            cursor: default;
+            box-sizing: border-box;
+            background-color: buttonface;
+            margin: 0em auto;
+            padding: 1px 6px;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonborder;
+            border-image: initial;
+        }
+        .container{
+            max-width: 1050px;
+            width: 95%;
+        }
+
+        .headline{
+            font-family:'Playfair Display',serif,-apple-system;
+            font-size: 32px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            text-align: -webkit-center;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 2em;
+            padding-top: 1.5em;
+        }
+
+        .button-primary{
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 10px 50px;
+            border: 2px solid #212529;
+            color: #fff;
+            background: #212529;
+            transition: all .3s ease;
+        }
+        .button-primary:is(:hover,:focus){
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        .testimonials, .features-and-benefits, .process, .cta-form{
+            min-height: 10vh;
+            height: auto;
+            margin: auto;
+            padding-bottom: 100px !important;
+            padding-top: 100px !important;
+        }
+        .testimonials, .process{
+            background-color: #fbfbf2;
+        }
+        /***********************************/
+        /************HEADER CODES***********/
+        /***********************************/
+        .header{
+            color: #212529;
+            padding-top: 1em;
+        }
+        .header .container{
+            max-width: 1150px;
+            width: 100%;
+        }
+        .logo{
+            height: 55px;
+        }
+        .logo-mobile{
+            display: none;
+            width: 120px;
+            padding: 10px 0;
+        }
+
+        .menu-btn{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            z-index: 1000;
+        }
+        .menu-btn_burger{
+            width: 40px;
+            height: 3px;
+            background-color: #212529;
+            border-radius: 5px;
+            transition: all .1s ease-in-out;
+        }
+        .menu-btn_burger-bfr,
+        .menu-btn_burger-aft{
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: #212529;
+            border-radius: 5px;
+            transition: all .1s ease-in-out;
+        }
+
+        .menu-btn_burger-bfr{
+            transform: translateY(-16px);
+            top: 1.9em;
+        }
+        .menu-btn_burger-aft{
+            transform: translateY(16px);
+            width: 20px;
+            bottom: 1.8em;
+            right: 5px;
+        }
+
+        /* menu animation */
+
+        .menu-btn.open .menu-btn_burger{
+            transform: translateX(-50px);
+            background-color: transparent;
+            box-shadow: none;
+        }
+        .menu-btn.open .menu-btn_burger-bfr{
+            transform: rotate(45deg) translate(15px, 15px);
+            top: 0;
+        }
+        .menu-btn.open .menu-btn_burger-aft{
+            transform: rotate(-45deg) translate(19px, -18px);
+            width: 40px;
+            bottom: 0;
+        }
+
+        /* menu content */
+        .menu{
+            display: none;
+            z-index: 100;
+            position: fixed;
+            background-color: #212529;
+            width: 100%;
+            height: inherit;
+            opacity: .9;
+            color: #fbfbf2;
+        }
+
+        .menu-content{
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+            height: inherit;
+        }
+        .menu-content ul {
+            position: absolute;
+            top: 38%;
+            left: 47%;
+            padding: 0;
+            text-align: center;
+            line-height: 3em;
+        }
+        .menu-content ul li{
+            list-style: none;
+        }
+        .menu-content ul li a{
+            color: #ffffff;
+            font-size: 30px;
+            font-family:'Playfair Display',serif,-apple-system;
+        }
+        .menu-content ul li a:hover{
+            color: #d8d8d7;
+        }
+        /***********************************/
+        /*******ABOVE THE FOLD CODES********/
+        /***********************************/
+        .above-the-fold{
+            min-height: 65vh;
+            height: auto;
+            margin: auto;
+        }
+
+        .zack-img{
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .atf-list-wrapper{
+            max-width: 100%;
+            width: 50%;
+        }
+
+        .atf-list-wrapper ul li{
+            margin: .4em 0;
+            line-height: 1.7em;
+        }
+        /***********************************/
+        /*******LOGO BAR********/
+        /***********************************/
+        .logo-bar{
+            min-height: 20vh;
+            height: auto;
+            max-width: 100%;
+            width: 100%;
+            padding-bottom: 100px !important;
+            padding-top: 100px !important;
+        }
+        .logo-wrapper{
+            flex-wrap: wrap;
+            gap: 4em;
+        }
+        .logo-ads{
+            list-style: none;
+            max-width: 90px;
+            max-height: 90px;
+        }
+        .logo-ads img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        /***********************************/
+        /*******TESTIMONIALS********/
+        /***********************************/
+
+        .testimonials{
+            padding-top: 1em;
+        }
+        .testimonials .col{
+            padding: 0;
+        }
+        .testimonials h2{
+            margin-bottom: 2em;
+        }
+
+        .testimonial-upperdiv{
+            margin-bottom: 4em;
+            gap: 3em;
+        }
+        .yt-vid{
+            max-height: 400px;
+            height: auto;
+            max-width: 100%;
+        }
+        .testimonial-lowerdiv{
+            gap: 1.5em;
+            margin-bottom: 2em;
+        }
+        .testimonial-lowerdiv .col:first-child{
+            margin-left: .9em;
+        }
+        .testimonial-lowerdiv .col:last-child{
+            margin-right: .9em;
+        }
+        
+        .google-tst, .facebook-tst, .tiktok-tst{
+            background-color: #fbfbf2;
+            color: #212529;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform .2s;
+            margin: 0 auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            flex-direction: column;   
+        }
+
+        .google-tst:hover, .facebook-tst:hover, .tiktok-tst:hover {
+            -ms-transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05); 
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;        
+        }
+
+        .google-tst-p-upper, .facebook-tst-p-upper, .tiktok-tst-p-upper{
+            padding: 1em 1em 0 1em;
+        }
+        .google-tst-p-lower, .facebook-tst-p-lower, .tiktok-tst-p-lower{
+            padding: 0 1em 1em;
+        }
+        .google-tst-p-lower p, .facebook-tst-p-lower p, .tiktok-tst-p-lower p{
+            padding: 15px;
+            min-height: 100px;
+            height: auto;
+        }
+        .testimonials-qoute{
+            margin: 1em 1em 1em 0;
+            max-width: 70px;
+            max-height: 70px;
+            width: 100%;
+            height: auto;
+            opacity: 0.4;
+        }
+
+        .testimonials-logo{
+            margin: 0 auto 1em;
+            padding: .5em;
+            max-width: 100%;
+            width: 120px;
+            max-height: 100%;
+            height: 120px;
+            clip-path: circle();
+        }
+        .testimonials-logo img{
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            clip-path: circle();
+            object-fit: cover;
+            background-color: transparent;
+        }
+
+        .testimonials button{
+            margin-top: 2em;
+        }
+
+        /***********************************/
+        /*******Features and benefits********/
+        /***********************************/  
+        .features-and-benefits{
+            text-align: center;
+        }
+        .features-and-benefits h2{
+            margin-bottom: 1.5em;
+        }
+        .features-and-benefits p{
+            margin-bottom: 2em;
+        }
+        .features-and-benefits h6{
+            font-weight: 700;
+            font-size: 21px;
+        }
+        .features-and-benefits button{
+            margin-top: 2em;
+        }
+        .icon-div img{
+            max-width: 100%;
+            width: 20%;
+            margin-bottom: 2em;
+        }
+        
+        .features-and-benefits .row{
+            gap: 2em;
+        }
+
+        /***********************************/
+        /*******PROCESS********/
+        /***********************************/
+
+        .process .headline{
+            margin-bottom: .5em;
+        }
+        /***********************************/
+        /*******ACCORDIONS********/
+        /***********************************/
+        .accordion {
+            background-color: #212529;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+            background-color: #000000;
+        }
+        .accordion-wrapper{
+            gap: 5em;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color:#ffffff;
+            max-height: 0;
+            overflow: hidden;
+            color: #212529;
+            transition: max-height 0.2s ease-out;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        }
+        .panel p{
+            padding-top: 1em;
+        }
+
+        /***********************************/
+        /*******CTA FORM********/
+        /***********************************/
+        .cta-form h2{
+            margin-bottom: 1.5em;
+        }
+        .cta-form button{
+            background-color: #ffffff;
+            color: #212529;
+        }
+        .cta-form button:hover{
+            background-color: #212529;
+            color: #ffffff;
+        }
+
+        /***********************************/
+        /*******FOOTER********/
+        /***********************************/
+        footer{
+            min-height: 20vh;
+            height: auto;
+            max-width: 100%;
+            width: 100%;
+            background-color: #212529;
+            padding: 1em 0 3em;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+        footer img{
+            width: 70px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+
+        /***********************************/
+        /**********MEDIA QUERIES************/
+        /***********************************/
+        @media (max-width: 1024px){
+            .testimonial-upperdiv{
+                flex-direction: column;
+                gap: 3em;
+            }
+        }
+        @media (max-width: 769px){
+            body{
+                line-height: 1.2;
+            }
+            .above-the-fold-container{
+                flex-direction: column;
+                gap: 3em;
+            }
+            
+
+
+        /***********************************/
+        /*******ABOVE THE FOLD CODES********/
+        /***********************************/
+            .above-the-fold-container{
+                padding-top: 5em;
+            }
+            .atf-list-wrapper{
+                width: 70%;
+            }
+            .atf-list-wrapper div:last-child{
+                display: flex;
+                justify-content: center;
+            }
+
+
+            .yt-vid iframe{
+                max-width: 400px;
+                min-width: 250px;
+                max-height: 250px;
+                min-height: 150px;
+            }
+
+            .testimonial-lowerdiv{
+                flex-direction: column;
+            }
+            .testimonial-lowerdiv .col:first-child{
+                margin-left: 0;
+            }
+            .testimonial-lowerdiv .col:last-child{
+                margin-right: 0;
+            }
+            .google-tst-p-lower p, .facebook-tst-p-lower p, .tiktok-tst-p-lower p{
+                min-height: 50px;
+                width: 100%;
+            }
+
+  
+        /***********************************/
+        /*******ACCORDIONS********/
+        /***********************************/
+            .accordion-wrapper{
+                gap: 1em;
+            }
+        }
+
+        @media (max-width: 480px){
+
+
+            .yt-vid iframe{
+                max-width: 270px;
+                min-width: 170px;
+                max-height: 170px;
+                min-height: 70px;
+            }
+
+        /***********************************/
+        /*******ACCORDIONS********/
+        /***********************************/
+            .accordion-wrapper{
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .accordion-wrapper{
+                gap: 1em;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-content">
+            <ul>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="index.html" target="_self">About</a></li>
+                <li><a href="index.html" target="_self">Careers</a></li>
+                <li><a href="contact.html" target="_self">Contact</a></li>
+            </ul>
+        </div>  
+    </div>
+    <!--header-->
+    <div class="header">
+        
+        <header>
+            <nav class="container d-flex justify-content-between">
+                <div>
+                    <a href="index.html"><img src="assets/logo.svg" alt="" class="img-fluid logo"></a>
+                    <a href="index.html"><img src="assets/logo.svg" alt="" class="img-fluid logo-mobile"></a>
+                </div>
+                <div class="menu-btn">
+                    <div class="menu-btn_burger-bfr"></div>
+                    <div class="menu-btn_burger"></div>
+                    <div class="menu-btn_burger-aft"></div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!--Above the fold-->
+    <div class="above-the-fold d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center above-the-fold-container">
+            <img src="assets/zack.png.png" alt="" class="zack-img">
+            <div class="atf-list-wrapper">
+                <div style="font-size: 1.1rem; margin-bottom: .5em; font-weight: 700;">Lorem ipsum dolor sit amet, consectetur adipiscing eli</div>
+                <ul>
+                    <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+                    <li>enim ad minim veniam, quis nostrud exercitation ullamco laboris</li>
+                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
+                    <li>xcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+                </ul>
+                <div>
+                    <a href="#"><button class="button-primary">Free Consultation</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- logo bar -->
+    <div class="logo-bar">
+        <div class="container">
+            <h2 class="headline">Sed ut perspiciatis unde omnis iste</h2>
+
+            <div class="logo-wrapper d-flex justify-content-around">
+                    <div class="logo-ads">
+                        <img src="assets/facebook-ads.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/tiktok-ads.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/google-ads.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/snapchat-logo.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/youtube-ads.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/shopify.png" alt="">
+                    </div>
+                    <div class="logo-ads">
+                        <img src="assets/klaviyo.png" alt="">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- testimonials -->
+    <div class="testimonials">
+        <div class="container">
+            <h2 class="headline">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</h2>
+            <div class="d-flex justify-content-between align-items-center testimonial-upperdiv">
+                <div class="yt-vid">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div>
+                    <h5>&#34;&ldquo;Sed ut perspiciatis unde omnis iste natus error sit&rdquo;</h5>
+                    <h6>voluptatem accusantium...</h6>
+                    <ul>
+                        <li>architecto beatae vitae dicta sunt explicabo</li>
+                        <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</li>
+                        <li>aut odit aut fugit, sed quia consequuntur magni dolores eos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="row testimonial-lowerdiv d-flex">
+                    <div class="col google-tst d-flex justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <div></div>
+                                <img src="assets/qoute.png" alt="" class="testimonials-qoute">
+                            </div>
+                            <div class="testimonials-logo">
+                                <img src="assets/google.png" alt="google-logo">
+                            </div>
+                            <div class="google-tst-p-upper">
+                                <p>&ldquo;Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit&rdquo;</p>
+                            </div>
+                        </div>
+                        <div class="google-tst-p-lower d-flex justify-content-start">
+                            <p>&#8211;Zack Miller, Founder/ CEO of Google</p>
+                        </div>
+                    </div>
+                    <div class="col facebook-tst d-flex justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <div></div>
+                                <img src="assets/qoute.png" alt="" class="testimonials-qoute">
+                            </div>
+                            <div class="testimonials-logo">
+                                <img src="assets/facebook.png" alt="facebook-logo">
+                            </div>
+                            <div class="facebook-tst-p-upper">
+                                <p>&ldquo;ed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.&rdquo;</p>
+                            </div>
+                        </div>
+                        <div class="facebook-tst-p-lower d-flex justify-content-start">
+                            <p>&#8211;Zack Miller, Founder/ CEO of Facebook</p>
+                        </div>
+                    </div>
+                    <div class="col tiktok-tst d-flex justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <div></div>
+                                <img src="assets/qoute.png" alt="" class="testimonials-qoute">
+                            </div>
+                            <div class="testimonials-logo">
+                                <img src="assets/tiktok.png" alt="tiktok-logo">
+                            </div>
+                            <div class="tiktok-tst-p-upper">
+                                <p>&ldquo;...Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.&rdquo;</p>
+                            </div>
+                        </div>
+                        <div class="tiktok-tst-p-lower d-flex justify-content-start">
+                            <p>&#8211;Zack Miller, Founder/ CEO of TikTok </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-buttondiv d-flex justify-content-center">
+                <a href="#"><button class="button-primary">START TODAY</button></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!--features and benefits-->
+    <div class="features-and-benefits">
+        <div class="container">
+            <h2 class="headline">vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</h2>
+            <p style="text-align: center;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            
+            <div class="row">
+                <div class="col">
+                    <div class="icon-div d-flex justify-content-center">
+                        <img src="assets/canva.svg" alt="canva-icon">
+                    </div>
+                    <div>
+                        <h6>similique sunt in</h6>
+                        <p>Trigger the right emails at the right time with complex marketing automation flows.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-div d-flex justify-content-center">
+                        <img src="assets/figma.svg" alt="figma-icon">
+                    </div>
+                    <div>
+                        <h6>culpa qui officia</h6>
+                        <p>Change the content of emails depending on who is reading them.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="icon-div d-flex justify-content-center">
+                        <img src="assets/godaddy.svg" alt="godaddy-icon">
+                    </div>
+                    <div>
+                        <h6>deserunt mollitia animi</h6>
+                        <p>We’ll write email copy that will build relationships and increase sales.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="icon-div d-flex justify-content-center">
+                        <img src="assets/illustrator.svg" alt="illustrator-icon">
+                    </div>
+                    <div>
+                        <h6>laborum et dolorum</h6>
+                        <p>All emails will be designed to reflect and represent your brand.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <a href="#"><button class="button-primary">LET&apos;S DO THIS</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!--Process-->
+    <div class="process">
+        <div class="container">
+            <h2 class="headline">Et harum quidem rerum facilis est et expedita distinctio</h2>
+            <p style="text-align: center;">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+        
+            <!--Steps-->
+            <div class="steps">
+                <div class="container">
+                    <div>
+                        <h2 class="headline">Step 1</h2>
+                        <div class="d-flex justify-content-between accordion-wrapper">
+                            <div class="">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div>
+                                <button class="accordion">Lorem ipsum dolor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">consectetur adipiscing elit</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">do eiusmod tempor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p>purchases, limited time offer, or something more specific. We&apos;ll run tests to determine the right offer for your flow.</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="headline">Step 2</h2>
+                        <div class="d-flex justify-content-between accordion-wrapper">
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div>
+                                <button class="accordion">Lorem ipsum dolor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">consectetur adipiscing elit</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">do eiusmod tempor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="headline">Step 3</h2>
+                        <div class="d-flex justify-content-between accordion-wrapper">
+                            <div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div>
+                                <button class="accordion">Lorem ipsum dolor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">consectetur adipiscing elit</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                <button class="accordion">do eiusmod tempor</button>
+                                    <div class="panel">
+                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--CTA FORM-->
+    <div class="cta-form">
+        <h2 class="headline">Work With Us</h2>
+        <div class="d-flex justify-content-center">
+            <a href="contact.html"><button class="button-primary">Contact &#x2192;</button></a>
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+    <footer>
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="assets/homestead-house.png" alt="">
+                <p>2705 S Lake Park Rd</p>
+                <p>Suite 103</p>
+                <p>Appleton, WI 54915</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!--NAVBURGER SCRIPT-->
+    <script>
+        const menuBtn = document.querySelector('.menu-btn');
+        let menuOpen = false;
+        const menu = document.querySelector('.menu');
+        const menuBrgBfr = document.querySelector('.menu-btn_burger-bfr');
+        const menuBrgAft = document.querySelector('.menu-btn_burger-aft');
+        menuBtn.addEventListener('click', () => {
+            if(!menuOpen){
+                menuBtn.classList.add('open');
+                menuOpen = true;
+                menu.style.display = "block";
+                menuBrgBfr.style.backgroundColor = "#ffffff";
+                menuBrgAft.style.backgroundColor = "#ffffff";
+            } else {
+                menuBtn.classList.remove('open');
+                menuOpen = false;
+                menu.style.display = "none";
+                menuBrgBfr.style.backgroundColor = "#212529";
+                menuBrgAft.style.backgroundColor = "#212529";
+            }
+        })
+    </script>
+
+    <!--STICKY SCRIPT-->
+    <script>
+        window.addEventListener("scroll", function(){
+            const menuContent = document.querySelector('.menu');
+            menuContent.classList.toggle("sticky", window.screenY > 0);
+        })
+    </script>
+
+    <!--ACCORDION SCRIPT-->
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+            
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,643 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Contact Test</title>
+    <!--FONTS-->
+    <link rel="stylesheet" href="fonts/metropolis-font/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+    
+    <!--ICONS-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        
+    <title>Contact</title>
+
+    <style>
+        body{
+            font-family: 'Metropolis Regular',Arial,sans-serif,-apple-system;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: -webkit-left;
+            text-align: left;
+            overflow-x: hidden;
+            color: #212529;
+            max-width: 100%;
+            width: 100%;
+            min-height: 100vh;
+            height: 100%;
+        }
+
+        a{
+            text-decoration: none;
+            background-color: transparent;
+            color: #212529;
+        }
+
+
+        button{
+            appearance: auto;
+            writing-mode: horizontal-tb !important;
+            text-rendering: auto;
+            color: buttontext;
+            letter-spacing: normal;
+            word-spacing: normal;
+            line-height: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: center;
+            align-items: flex-start;
+            cursor: default;
+            box-sizing: border-box;
+            background-color: buttonface;
+            margin: 0em auto;
+            padding: 1px 6px;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonborder;
+            border-image: initial;
+        }
+
+        .button-primary{
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 10px 50px;
+            border: 2px solid #212529;
+            color: #fff;
+            background: #212529;
+            transition: all .3s ease;
+        }
+        .button-primary:is(:hover,:focus){
+            background-color: #ffffff;
+            color: #212529;
+        }
+
+        .container{
+            max-width: 940px;
+            width: 95%;
+        }
+
+        .contacts, .forms{
+            min-height: 10vh;
+            height: auto;
+            margin: auto;
+            padding-bottom: 100px !important;
+            padding-top: 100px !important;
+        }
+        /***********************************/
+        /************HEADER CODES***********/
+        /***********************************/
+        .header{
+            color: #212529;
+            padding-top: 1em;
+        }
+        .logo{
+            height: 55px;
+        }
+        .logo-mobile{
+            display: none;
+            width: 120px;
+            padding: 10px 0;
+        }
+
+        .menu-btn{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            z-index: 1000;
+        }
+        .menu-btn_burger{
+            width: 40px;
+            height: 3px;
+            background-color: #212529;
+            border-radius: 5px;
+            transition: all .1s ease-in-out;
+        }
+        .menu-btn_burger-bfr,
+        .menu-btn_burger-aft{
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: #212529;
+            border-radius: 5px;
+            transition: all .1s ease-in-out;
+        }
+
+
+        .menu-btn_burger-bfr{
+            transform: translateY(-16px);
+            top: 1.9em;
+        }
+        .menu-btn_burger-aft{
+            transform: translateY(16px);
+            width: 20px;
+            bottom: 1.8em;
+            right: 5px;
+
+        }
+
+        /* menu animation */
+
+        .menu-btn.open .menu-btn_burger{
+            transform: translateX(-50px);
+            background-color: transparent;
+            box-shadow: none;
+        }
+        .menu-btn.open .menu-btn_burger-bfr{
+            transform: rotate(45deg) translate(15px, 15px);
+            top: 0;
+        }
+        .menu-btn.open .menu-btn_burger-aft{
+            transform: rotate(-45deg) translate(19px, -18px);
+            width: 40px;
+            bottom: 0;
+        }
+        
+
+        /* menu content */
+        .menu{
+            display: none;
+            z-index: 100;
+            position: fixed;
+            background-color: #212529;
+            width: 100%;
+            height: inherit;
+            opacity: .9;
+            color: #fbfbf2;
+        }
+
+        .menu-content{
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+            height: inherit;
+        }
+        .menu-content ul {
+            position: absolute;
+            top: 38%;
+            left: 47%;
+            padding: 0;
+            text-align: center;
+            line-height: 3em;
+        }
+        .menu-content ul li{
+            list-style: none;
+        }
+        .menu-content ul li a{
+            color: #ffffff;
+            font-size: 30px;
+            font-family:'Playfair Display',serif,-apple-system;
+        }
+        .menu-content ul li a:hover{
+            color: #d8d8d7;
+        }
+
+        /***********************************/
+        /***********HEADER CODES**********/
+        /***********************************/
+        .header .container{
+            max-width: 1150px;
+            width: 100%;
+        }
+
+        /***********************************/
+        /***********CONTACTS CODES**********/
+        /***********************************/
+        .contacts h1{
+            font-family:'Playfair Display',serif,-apple-system;
+            font-weight: 700;
+            font-size: 80px;
+            padding-top: 3rem;
+        }
+        .contact-title{
+            min-height: 30vh;
+            text-align: center;
+            width: 100%;
+        }
+        .contact-svg-container{
+            width: 100%;     
+            position: relative;       
+        }
+        svg{
+            width: 140px;
+            position: absolute;
+            z-index: -1;
+            bottom: 0;
+            height: 100px;
+        }
+
+        /***********************************/
+        /***********PARAGRAPH CODES**********/
+        /***********************************/
+        .paragraphs-intro{
+            color: rgb(136, 136, 136);
+        }
+
+
+        /***********************************/
+        /***********FORM CODES**********/
+        /***********************************/
+        .forms h6, .forms h5{
+            font-weight: 900;
+            font-family: 'Public Sans', sans-serif;
+            color: #212529;
+        }
+        .yi-div{
+            margin-bottom: 3em;
+        }
+        .yi-divs div, .ci-divs div, .ci-textareas div, .interests div{
+            width: 100%;
+            position: relative;
+        }
+        .yi-divs div span, .ci-divs div span, .ci-textareas div span, .interests div span{
+            font-weight: bold;
+            position: absolute;
+            right: -8px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #f7f7f7;
+            width: 17px;
+            height: 17px;
+        }
+        .hide {
+            display: none;
+        }
+                
+        .btn-hide:hover + .hide {
+            display: block;
+            background-color: #212529;
+            color: #ffffff;
+            z-index: 1;
+            border-radius: 3px;
+            width: 70px;
+            height: auto;
+            padding: 5px 10px;
+            font-size: 12px;
+            top: -35px;
+            right: -35px;
+        }   
+        .yi-divs div:first-child, .ci-divs div:first-child{
+            margin-right: .5em;
+        }
+        .yi-div input, .ci-div input, textarea, .ci-div select{
+            position: relative;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #d8d8d7;
+            padding: 5px 10px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+        }
+        .ci-div select{
+            padding: 8px 10px 8px 5px;
+            cursor: pointer;
+        }
+        .ci-div option{
+            color: #212529;
+            cursor: pointer;
+        }
+
+        .yi-div input, .ci-div input, textarea, .ci-div select{
+            margin: .3em 0;
+        }
+        
+        .yi-div input:focus, .ci-div input:focus, textarea:focus, .ci-div select:focus{
+           outline: none;  
+           border: 1px solid #7ad7f0;
+        }
+        .yi-div input::placeholder, .ci-div input::placeholder, textarea::placeholder, .ci-div select{
+            color: #d8d8d7;
+            font-weight: 500;
+        }
+        .forms h5{
+            margin: 2em 0 1em;
+        }
+
+        .check-container{
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .check-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 5px;
+            border: 1px solid #d8d8d7;
+            background-color: transparent;
+        }
+        .check-container input:checked ~ .checkmark {
+            background-color: #0d87eb;
+            border: 1px solid #0d87eb;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .check-container input:checked ~ .checkmark::after {
+            display: block;
+        }
+        .check-container .checkmark::after {
+            left: 6px;
+            top: 1px;
+            width: 6px;
+            height: 13px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        .interests{
+            background-color: #212529;
+        }
+        /***********************************/
+        /*******FOOTER********/
+        /***********************************/
+
+        footer{
+            min-height: 20vh;
+            height: auto;
+            max-width: 100%;
+            width: 100%;
+            background-color: #212529;
+            padding: 1em 0 3em;
+            color: #ffffff;
+            text-align: center;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+        footer img{
+            width: 70px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+
+        /***********************************/
+        /**********MEDIA QUERIES************/
+        /***********************************/
+        @media (max-width: 991px){
+            .contacts h1{
+                font-size: 60px;
+            }
+            svg{
+                width: 120px;
+            }
+        }
+        @media (max-width: 767px){
+            .yi-div div, .ci-div div{
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-content">
+            <ul>
+                <li><a href="index.html" target="_self">Home</a></li>
+                <li><a href="contact.html" target="_self">About</a></li>
+                <li><a href="contact.html" target="_self">Careers</a></li>
+                <li><a href="contact.html" target="_self">Contact</a></li>
+            </ul>
+        </div>  
+    </div>
+    <!--header-->
+    <div class="header">
+        <header>
+            <nav class="container d-flex justify-content-between">
+                <div>
+                    <a href="index.html"><img src="assets/logo.svg" alt="" class="img-fluid logo"></a>
+                    <a href="index.html"><img src="assets/logo.svg" alt="" class="img-fluid logo-mobile"></a>
+                </div>
+                <div class="menu-btn">
+                    <div class="menu-btn_burger-bfr"></div>
+                    <div class="menu-btn_burger"></div>
+                    <div class="menu-btn_burger-aft"></div>                
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="contacts">
+        <div class="container contact-title">
+            <div class="contact-svg-container d-flex justify-content-center align-content-center">
+                <h1>Contact Us</h1>
+                <svg width="865" height="592" viewBox="0 0 865 592" fill="none">
+                    <path 
+                        d="M414.2 591.95C338.1 590.84 260.82 580.34 187.23 550.84C153.01 537.13 118.83 522.77 87.98 502.03C57.76 481.71 32.63 456.64 17.28 422.99C7.28003 401.06 3.16003 377.68 0.960027 353.85C-1.11997 331.34 0.330026 309.35 8.74003 288.04C19.91 259.75 38.46 237.1 62.79 219.56C85.86 202.93 109.73 187.35 133.75 172.09C170.99 148.45 205.44 121.26 238.94 92.68C269.34 66.75 301.83 43.97 339.12 28.66C375 13.92 412.27 5.00996 450.84 2.02996C563.81 -6.70003 664.94 25.81 754.64 93.34C812.04 136.55 848.34 194.75 860.38 265.95C872.6 338.21 854.47 402.79 803.92 456.93C771.89 491.24 733.14 516.26 690.78 535.98C641.38 558.99 589.38 573.16 535.78 582.07C496.42 588.61 456.76 591.29 414.2 591.95V591.95Z" fill="#e8e5de">
+                    </path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="paragraphs-intro">
+        <div class="container">
+            <p>Homestead Studio is an eCommerce growth marketing agency specialized in scaling 7&#8209;9 figure brands in the post&#8209;iOS14 era.</p>
+            <p>We look forward to connecting after learning more about your business.</p>
+        </div>
+    </div>
+
+    <div class="forms">
+        <div class="container">
+            <form action="">
+                <div class="yi-div">
+                    <h6>Your information</h6>
+                    <div class="d-flex justify-content-between yi-divs">
+                        <div>
+                            <input type="text" class="important" placeholder="First name">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                        <div>
+                            <input type="text" class="important" placeholder="Last name">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between yi-divs">
+                        <div>
+                            <input type="text" class="important" placeholder="Email">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                        <div>
+                            <input type="text" class="important" placeholder="Job title">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                    </div>
+                </div>
+                <div class="ci-div">
+                    <h6>Company information</h6>
+                    <div class="d-flex justify-content-between ci-divs">
+                        <div>
+                            <input type="text" class="important" placeholder="Company name">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                        <div class="custom-select">
+                            <select name="" id="">
+                                <option value="">Annual Revenue</option>
+                                <option value="">&#36;0&#8211;&#36;500k</option>
+                                <option value="">&#36;500k&#8211;&#36;1M</option>
+                                <option value="">&#36;1M&#8211;&#36;5M</option>
+                                <option value="">&#36;5M&#8211;&#36;10M</option>
+                                <option value="">&#36;10M&#8211;&#36;100M</option>
+                                <option value="">&#36;100M+</option>
+                            </select>
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between ci-divs">
+                        <div>
+                            <input type="text" class="important" placeholder="Website URL">
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                        <div>
+                            <select name="" id="">
+                                <option value="">Average monthly spend?</option>
+                                <option value="">&#36;0&#8211;&#36;15k</option>
+                                <option value="">&#36;15k&#8211;&#36;30k</option>
+                                <option value="">&#36;30k&#8211;&#36;100k</option>
+                                <option value="">&#36;100k&#8211;&#36;500k</option>
+                                <option value="">&#36;500k&#8211;&#36;1M</option>
+                                <option value="">&#36;1M+</option>
+                            </select>
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                    </div>
+                    <div class="ci-textareas">
+                        <div>
+                            <textarea name="" id="" cols="" rows="5" placeholder="How did you hear about Homestead?"></textarea>
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                        <div>
+                            <textarea name="" id="" cols="" rows="5" placeholder="What are you looking for in a growth marketing partner?"></textarea>
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbuttons">
+                    <div class="interests">
+                        <div>
+                            <h5>What services are you interested in?</h5>
+                            <span class="btn-hide">&#xFF0A;</span>
+                            <span class="hide">Required</span>
+                        </div>
+                    </div>  
+                        <label for="paidSocial" class="check-container">Paid Social
+                            <input type="checkbox" id="paidSocial" value="paidsocial">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="paidSearch" class="check-container">Paid Search
+                            <input type="checkbox" id="paidSearch" value="paidsearch">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="emailSMS" class="check-container">Email/SMS
+                            <input type="checkbox" id="emailSMS" value="emailsms">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="UGC" class="check-container">UGC
+                            <input type="checkbox" id="UGC" value="ugc">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="landingPages" class="check-container">Landing Pages
+                            <input type="checkbox" id="landingPages" value="landingpages">
+                            <span class="checkmark"></span>
+                        </label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a href="contact.html"><button class="button-primary">Submit &#x2192;</button></a>
+                    <p>Made with Tally</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="d-flex justify-content-center">
+            <div>
+                <img src="assets/homestead-house.png" alt="">
+                <p>2705 S Lake Park Rd</p>
+                <p>Suite 103</p>
+                <p>Appleton, WI 54915</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--NAVBURGER SCRIPT-->
+    <script>
+        const menuBtn = document.querySelector('.menu-btn');
+        let menuOpen = false;
+        const menu = document.querySelector('.menu');
+        const menuBrgBfr = document.querySelector('.menu-btn_burger-bfr');
+        const menuBrgAft = document.querySelector('.menu-btn_burger-aft');
+        menuBtn.addEventListener('click', () => {
+            if(!menuOpen){
+                menuBtn.classList.add('open');
+                menuOpen = true;
+                menu.style.display = "block";
+                menuBrgBfr.style.backgroundColor = "#ffffff";
+                menuBrgAft.style.backgroundColor = "#ffffff";
+            } else {
+                menuBtn.classList.remove('open');
+                menuOpen = false;
+                menu.style.display = "none";
+                menuBrgBfr.style.backgroundColor = "#212529";
+                menuBrgAft.style.backgroundColor = "#212529";
+            }
+        })
+    </script>
+
+    <!--STICKY SCRIPT-->
+    <script>
+        window.addEventListener("scroll", function(){
+            const menuContent = document.querySelector('.menu');
+            menuContent.classList.toggle("sticky", window.screenY > 0);
+        })
+    </script>
+</body>
+</html>
